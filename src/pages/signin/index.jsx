@@ -1,11 +1,30 @@
 import logo from '../../assets/logo.png'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import './Signing.css'
 
+import {AuthContext} from '../../context/auth'
+
 export default function SignIn(){
+
+    
+
+
     const [email, setEmail] = useState('')
     const [password, setPasswotd] = useState('')
+
+    const {SignIn} = useContext(AuthContext)
+
+    function handleLogin(e){
+        e.preventDefault();
+
+        if(email !=='' && password !==''){
+
+            SignIn(email, password);
+
+        }
+
+    }
 
 
     return(
@@ -15,7 +34,8 @@ export default function SignIn(){
                     <img src={logo} alt='Logo da Aplicação'/>
                 </div>
 
-                <form action="">
+                <form onSubmit={handleLogin}>
+
                     <h1>Login</h1>
                     <input type="text" placeholder='Digite seu Email' 
                     value={email}
