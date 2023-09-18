@@ -5,7 +5,12 @@ export const AuthContext = createContext({});
 function SignIn(email, password){
 
 
-    alert("Você logou com sucesso "+'email: ' + email+ ' senha: '+password)
+    alert("Você logou com sucesso ")
+}
+//cadastrar user
+function SignUp ( email, password, name){
+
+    console.log(name)
 }
 
 
@@ -17,7 +22,8 @@ function AuthProvider({children}) {
         <AuthContext.Provider value={{
             signed: !!user,
             user,
-            SignIn
+            SignIn,
+            SignUp,
         }}>
                 {children}
         </AuthContext.Provider>
